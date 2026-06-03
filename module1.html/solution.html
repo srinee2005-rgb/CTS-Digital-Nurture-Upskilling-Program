@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local Community Event Portal</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f7f6;
+            color: #333;
+        }
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+        nav {
+            background-color: #34495e;
+            padding: 0.5rem;
+            text-align: center;
+        }
+        nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        main {
+            max-width: 1000px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+        section {
+            background: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        #welcomeBanner {
+            background-color: #3498db;
+            color: white;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .highlight {
+            background-color: #f1c40f;
+            color: #333;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+
+        
+        .gallery-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+        .gallery-table td {
+            padding: 10px;
+            text-align: center;
+            width: 33.33%;
+        }
+        .gallery-img {
+            width: 100%;
+            max-width: 250px;
+            height: 150px;
+            object-fit: cover;
+            border: 3px solid #ddd;
+            border-radius: 5px;
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+        .gallery-img:hover {
+            border-color: #3498db;
+        }
+        .enlarged {
+            transform: scale(1.5);
+            z-index: 10;
+            position: relative;
+            border-color: #e74c3c !important;
+        }
+
+        form {
+            display: grid;
+            gap: 15px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input, select, textarea {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #3498db;
+            box-shadow: 0 0 5px rgba(52,152,219,0.5);
+        }
+        button {
+            padding: 12px;
+            background-color: #2ecc71;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        button:hover {
+            background-color: #27ae60;
+        }
+        .btn-clear {
+            background-color: #e74c3c;
+            margin-top: 10px;
+        }
+        .btn-clear:hover {
+            background-color: #c0392b;
+        }
+        output {
+            display: block;
+            margin-top: 15px;
+            padding: 10px;
+            background-color: #d4edda;
+            color: #155724;
+            border-radius: 4px;
+            font-weight: bold;
+            text-align: center;
+        }
+        .fee-display {
+            font-weight: bold;
+            color: #2c3e50;
+            margin-top: 5px;
+        }
+        .char-counter {
+            font-size: 0.85rem;
+            color: #666;
+            text-align: right;
+            margin-top: 2px;
+        }
+
+        video {
+            width: 100%;
+            max-width: 600px;
+            display: block;
+            margin: 15px auto;
+            border-radius: 5px;
+        }
+        #videoStatus {
+            text-align: center;
+            font-style: italic;
+            color: #555;
+        }
+
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Local Community Event Portal</h1>
+    </header>
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#events">Events Gallery</a>
+        <a href="#register">Registration</a>
+    </nav>
+
+    <main>
+        
+        <section id="home">
+            <div id="welcomeBanner">
+                <h2>Welcome back, Resident!</h2>
+                <p>Explore city services and sign up for local events. <span style="color: #e74c3c; font-weight: bold; background: white; padding: 2px 6px; border-radius: 3px;">Special Offer:</span> First 50 registrations get a free community lunch voucher!</p>
+                <p>Stay updated on the <span class="highlight">Summer Clean-Up Drive</span> happening this weekend!</p>
+            </div>
+        </section>
+
+        <section id="events">
+            <h2>Past Community Events</h2>
+            
+            <table class="gallery-table">
+                <caption>A retrospective gallery highlighting our successful town gatherings.</caption>
+                <tr>
+                    <td>
+                        <img src="Local tree plant.png" alt="Local Tree Planting Marathon" title="Tree Planting 2025" class="gallery-img" ondblclick="toggleImageSize(this)">
+                    </td>
+                    <td>
+                        <img src="Annual food fest.png" alt="Annual Charity Food Fest" title="Charity Food Fest" class="gallery-img" ondblclick="toggleImageSize(this)">
+                    </td>
+                    <td>
+                        <img src="Weekend clean up.png" alt="Weekend Neighborhood Clean-Up" title="Neighborhood Clean-Up" class="gallery-img" ondblclick="toggleImageSize(this)">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <img src="Youth outdoor.png" alt="Youth Outdoor Sports Clinic" title="Sports Clinic" class="gallery-img" ondblclick="toggleImageSize(this)">
+                    </td>
+                    <td>
+                        <img src="Senior Technology.png" alt="Senior Technology Literacy Workshop" title="Senior Tech Workshop" class="gallery-img" ondblclick="toggleImageSize(this)">
+                    </td>
+                    <td>
+                        <img src="Downtown farmers.png" alt="Downtown Farmers Market" title="Farmers Market" class="gallery-img" ondblclick="toggleImageSize(this)">
+                    </td>
+                </tr>
+            </table>
+        </section>
+
+               
+        <section id="promo">
+            <h2>Event Promo Video</h2>
+          
+            <div id="videoStatus">Loading video media streams...</div>
+            
+           
+            <video 
+                id="promoVideo" 
+                controls 
+                poster="Video.png" 
+                oncanplay="handleVideoReady()"
+                style="width: 100%; max-width: 700px; display: block; margin: 15px auto; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
+                
+              
+                <source src="event.mp4" type="video/mp4">
+               
+            </video>
+        </section>
+
+
+        <section id="register">
+            <h2>Event Registration & Feedback</h2>
+            <form id="registrationForm" onsubmit="handleFormSubmit(event)">
+                
+               
+                <div class="form-group">
+                    <label for="userName">Full Name *</label>
+                    <input type="text" id="userName" placeholder="Enter your full name" required autofocus>
+                </div>
+
+                <div class="form-group">
+                    <label for="userEmail">Email Address *</label>
+                    <input type="email" id="userEmail" placeholder="name@example.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="userPhone">Phone Number (10 digits) *</label>
+                    <input type="tel" id="userPhone" placeholder="1234567890" required onblur="validatePhoneNumber(this)">
+                </div>
+
+                <div class="form-group">
+                    <label for="eventDate">Preferred Event Date *</label>
+                    <input type="date" id="eventDate" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="eventType">Select Event Type *</label>
+                    <select id="eventType" required onchange="handleEventTypeChange(this)">
+                        <option value="">-- Choose an Event --</option>
+                        <option value="cultural">Town Hall Cultural Gala</option>
+                        <option value="sports">Community Sports Day</option>
+                        <option value="workshop">Business Networking Workshop</option>
+                    </select>
+                    <div id="feeDisplay" class="fee-display"></div>
+                </div>
+
+              
+                <div class="form-group" style="margin-top: 15px; border-top: 1px dashed #ccc; padding-top: 15px;">
+                    <label for="feedbackMsg">Feedback / Additional Comments</label>
+                    <textarea id="feedbackMsg" rows="4" placeholder="Share your suggestions with the council..." onkeyup="countCharacters(this)"></textarea>
+                    <div id="charCounter" class="char-counter">Characters remaining: 250</div>
+                </div>
+
+             
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 10px;">
+                    
+                    <button type="submit" id="submitBtn" onclick="handleRegisterClick()">Complete Registration</button>
+                    
+                    <button type="button" id="feedbackBtn" onclick="handleFeedbackSubmit()" style="background-color: #3498db;">Submit Feedback Only</button>
+                </div>
+
+                <button type="button" class="btn-clear" onclick="clearPreferences()">Clear Form & Storage Preferences</button>
+                
+                <output id="formOutput" style="display: none;"></output>
+            </form>
+        </section>
