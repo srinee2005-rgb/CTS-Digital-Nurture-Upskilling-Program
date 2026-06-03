@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Local Community Event Portal</title>
+
+  <!-- Exercise 1: External Stylesheet linked here -->
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- Exercise 5: Google Font via <link> -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet"/>
+
+  <!-- Exercise 1: Internal <style> for body background (as required) -->
+  <style>
+    /* Internal style: body background color */
+    body {
+      background-color: #f0ede6;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <!-- Exercise 1: Inline style to make heading red -->
+    <h1 id="mainHeader" style="color: #e74c3c;">Local Community Event Portal</h1>
+    <p class="header-tagline">Connecting Residents · Building Community</p>
+  </header>
+
+  <!-- Navigation — Exercise 6: list + link pseudo-class styling -->
+  <nav>
+    <ul class="nav-menu">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#events">Events Gallery</a></li>
+      <li><a href="#promo">Promo Video</a></li>
+      <li><a href="#register">Register</a></li>
+    </ul>
+  </nav>
+
+  <main>
+
+    <!-- ── Home / Welcome Banner ── -->
+    <section id="home">
+      <div id="welcomeBanner">
+        <h2>Welcome back, Resident!</h2>
+        <p>Explore city services and sign up for local events.
+          <span style="color:#e74c3c; font-weight:bold; background:white; padding:2px 6px; border-radius:3px;">
+            Special Offer:
+          </span>
+          First 50 registrations get a free community lunch voucher!
+        </p>
+        <p>Stay updated on the <span class="highlight">Summer Clean-Up Drive</span> happening this weekend!</p>
+      </div>
+
+      <!-- Exercise 8: visibility demo (hidden but takes space) vs display:none -->
+      <!-- Uncomment to test:
+      <p class="visibility-hidden-demo">I am hidden but still take space.</p>
+      <p class="display-none-demo">I am removed from layout completely.</p>
+      -->
+    </section>
+
+    <!-- ── Events Gallery — Exercise 7: Table Styling ── -->
+    <section id="events">
+      <h2>Past Community Events</h2>
+
+      <!-- Exercise 7: styled table with zebra rows -->
+      <table class="gallery-table">
+        <caption>A retrospective gallery highlighting our successful town gatherings.</caption>
+        <thead>
+          <tr>
+            <th>Tree Planting</th>
+            <th>Food Festival</th>
+            <th>Clean-Up Drive</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <img src="Local tree plant.png" alt="Local Tree Planting Marathon"
+                   title="Tree Planting 2025" class="gallery-img"
+                   ondblclick="toggleImageSize(this)" onerror="this.src='https://placehold.co/250x150/2c7a4b/white?text=Tree+Planting'"/>
+            </td>
+            <td>
+              <img src="Annual food fest.png" alt="Annual Charity Food Fest"
+                   title="Charity Food Fest" class="gallery-img"
+                   ondblclick="toggleImageSize(this)" onerror="this.src='https://placehold.co/250x150/e85d04/white?text=Food+Fest'"/>
+            </td>
+            <td>
+              <img src="Weekend clean up.png" alt="Weekend Neighborhood Clean-Up"
+                   title="Neighborhood Clean-Up" class="gallery-img"
+                   ondblclick="toggleImageSize(this)" onerror="this.src='https://placehold.co/250x150/1a3c5e/white?text=Clean-Up'"/>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <img src="Youth outdoor.png" alt="Youth Outdoor Sports Clinic"
+                   title="Sports Clinic" class="gallery-img"
+                   ondblclick="toggleImageSize(this)" onerror="this.src='https://placehold.co/250x150/8B2FC9/white?text=Sports+Day'"/>
+            </td>
+            <td>
+              <img src="Senior Technology.png" alt="Senior Technology Literacy Workshop"
+                   title="Senior Tech Workshop" class="gallery-img"
+                   ondblclick="toggleImageSize(this)" onerror="this.src='https://placehold.co/250x150/0369a1/white?text=Tech+Workshop'"/>
+            </td>
+            <td>
+              <img src="Downtown farmers.png" alt="Downtown Farmers Market"
+                   title="Farmers Market" class="gallery-img"
+                   ondblclick="toggleImageSize(this)" onerror="this.src='https://placehold.co/250x150/b45309/white?text=Farmers+Market'"/>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- ── Community Bulletin — Exercise 9: Multi-column ── -->
+    <section id="bulletin">
+      <h2>Community Bulletin</h2>
+      <article class="bulletin-article">
+        <p>The city council has approved a new parks development plan that will add three green spaces across the western districts. Construction is expected to begin early next year and will include walking trails, picnic areas, and children's playgrounds. Residents are encouraged to attend the next town hall for a detailed briefing.</p>
+        <p>The annual community awards ceremony will be held on the last Friday of this month. Nominations are now open for categories including Volunteer of the Year, Best Local Business, and Outstanding Youth Contribution. Submit your nominations via the online portal or drop a form at the community centre.</p>
+        <p>Road maintenance works on Elm Street will continue through the weekend. Motorists are advised to use Oak Avenue as an alternative route. The council apologises for any inconvenience and temporary traffic lights will be in place at key intersections during peak hours.</p>
+      </article>
+    </section>
+
+    <!-- ── Promo Video ── -->
+    <section id="promo">
+      <h2>Event Promo Video</h2>
+      <div id="videoStatus">Loading video media streams…</div>
+      <video id="promoVideo" controls poster="Video.png"
+             oncanplay="handleVideoReady()"
+             style="width:100%; max-width:700px; display:block; margin:15px auto; border-radius:8px; box-shadow:0 4px 12px rgba(0,0,0,0.15);">
+        <source src="event.mp4" type="video/mp4"/>
+        Your browser does not support the video tag.
+      </video>
+    </section>
+
+    <!-- ── Registration Form — Exercise 8: outline on inputs ── -->
+    <section id="register">
+      <h2>Event Registration &amp; Feedback</h2>
+      <form id="registrationForm" onsubmit="handleFormSubmit(event)">
+
+        <div class="form-group">
+          <label for="userName">Full Name *</label>
+          <input type="text" id="userName" placeholder="Enter your full name" required autofocus/>
+        </div>
+
+        <div class="form-group">
+          <label for="userEmail">Email Address *</label>
+          <input type="email" id="userEmail" placeholder="name@example.com" required/>
+        </div>
+
+        <div class="form-group">
+          <label for="userPhone">Phone Number (10 digits) *</label>
+          <input type="tel" id="userPhone" placeholder="1234567890" required onblur="validatePhoneNumber(this)"/>
+        </div>
+
+        <div class="form-group">
+          <label for="eventDate">Preferred Event Date *</label>
+          <input type="date" id="eventDate" required/>
+        </div>
+
+        <div class="form-group">
+          <label for="eventType">Select Event Type *</label>
+          <select id="eventType" required onchange="handleEventTypeChange(this)">
+            <option value="">-- Choose an Event --</option>
+            <option value="cultural">Town Hall Cultural Gala</option>
+            <option value="sports">Community Sports Day</option>
+            <option value="workshop">Business Networking Workshop</option>
+          </select>
+          <div id="feeDisplay" class="fee-display"></div>
+        </div>
+
+        <div class="form-group" style="margin-top:15px; border-top:1px dashed #ccc; padding-top:15px;">
+          <label for="feedbackMsg">Feedback / Additional Comments</label>
+          <textarea id="feedbackMsg" rows="4"
+                    placeholder="Share your suggestions with the council…"
+                    onkeyup="countCharacters(this)"></textarea>
+          <div id="charCounter" class="char-counter">Characters remaining: 250</div>
+        </div>
+
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:15px; margin-top:10px;">
+          <button type="submit" id="submitBtn">Complete Registration</button>
+          <button type="button" id="feedbackBtn" onclick="handleFeedbackSubmit()"
+                  style="background-color:#3498db;">Submit Feedback Only</button>
+        </div>
+
+        <button type="button" class="btn-clear" onclick="clearPreferences()">
+          Clear Form &amp; Storage Preferences
+        </button>
+
+        <output id="formOutput" style="display:none;"></output>
+      </form>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Local Community Event Portal. All rights reserved.</p>
+  </footer>
+
+  <!-- ── JavaScript ── -->
+  <script>
+    /* ── Exercise 11: JS Functions used by the HTML ── */
+
+    // Toggle image zoom on double-click
+    function toggleImageSize(img) {
+      img.classList.toggle('enlarged');
+    }
+
+    // Video ready handler
+    function handleVideoReady() {
+      const status = document.getElementById('videoStatus');
+      if (status) {
+        status.textContent = '✅ Video ready to play.';
+        status.style.color = '#2ecc71';
+      }
+    }
+
+    // Event fees lookup
+    const eventFees = {
+      cultural:  'Registration Fee: ₹250',
+      sports:    'Registration Fee: FREE',
+      workshop:  'Registration Fee: ₹500'
+    };
+
+    function handleEventTypeChange(select) {
+      const display = document.getElementById('feeDisplay');
+      display.textContent = eventFees[select.value] || '';
+    }
+
+    // Phone validation (10 digits)
+    function validatePhoneNumber(input) {
+      const val = input.value.trim();
+      if (!/^\d{10}$/.test(val)) {
+        input.style.borderColor = '#e74c3c';
+        input.style.outline = '3px solid rgba(231,76,60,0.25)';
+        alert('Please enter a valid 10-digit phone number.');
+      } else {
+        input.style.borderColor = '#2ecc71';
+        input.style.outline = '3px solid rgba(46,204,113,0.25)';
+      }
+    }
+
+    // Character counter (max 250)
+    function countCharacters(textarea) {
+      const maxLen = 250;
+      const remaining = maxLen - textarea.value.length;
+      const counter = document.getElementById('charCounter');
+      counter.textContent = `Characters remaining: ${Math.max(0, remaining)}`;
+      counter.style.color = remaining < 30 ? '#e74c3c' : '#666';
+      if (textarea.value.length > maxLen) {
+        textarea.value = textarea.value.substring(0, maxLen);
+      }
+    }
+
+    // Form submit
+    function handleFormSubmit(e) {
+      e.preventDefault();
+      const name  = document.getElementById('userName').value.trim();
+      const email = document.getElementById('userEmail').value.trim();
+      const event = document.getElementById('eventType').options[
+                      document.getElementById('eventType').selectedIndex
+                    ].text;
+      showOutput(`🎉 Thank you, ${name}! You have successfully registered for "${event}". A confirmation will be sent to ${email}.`);
+    }
+
+    // Feedback-only submit
+    function handleFeedbackSubmit() {
+      const msg = document.getElementById('feedbackMsg').value.trim();
+      if (!msg) { alert('Please enter feedback before submitting.'); return; }
+      showOutput(`✅ Feedback received! Thank you for your input.`);
+    }
+
+    // Display output message
+    function showOutput(msg) {
+      const out = document.getElementById('formOutput');
+      out.textContent = msg;
+      out.style.display = 'block';
+      out.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    // Clear form
+    function clearPreferences() {
+      document.getElementById('registrationForm').reset();
+      document.getElementById('feeDisplay').textContent = '';
+      document.getElementById('charCounter').textContent = 'Characters remaining: 250';
+      const out = document.getElementById('formOutput');
+      out.textContent = '';
+      out.style.display = 'none';
+      // Remove validation colours
+      document.querySelectorAll('input, select, textarea').forEach(el => {
+        el.style.borderColor = '';
+        el.style.outline = '';
+      });
+    }
+  </script>
+
+</body>
+</html>

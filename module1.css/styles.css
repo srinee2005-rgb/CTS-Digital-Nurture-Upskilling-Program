@@ -1,0 +1,592 @@
+/* ============================================================
+   styles.css — Local Community Event Portal
+   Linked via: <link rel="stylesheet" href="styles.css" />
+   Covers CSS3 Exercises 1–11
+   ============================================================ */
+
+
+/* ============================================================
+   Exercise 3: Universal Selector — reset margin/padding
+   ============================================================ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+/* ============================================================
+   CSS Custom Properties (Design Tokens)
+   Exercise 4: HEX and RGBA colors defined centrally
+   ============================================================ */
+:root {
+  --color-primary:   #1a3c5e;
+  --color-accent:    #e85d04;
+  --color-success:   #2ecc71;
+  --color-danger:    #e74c3c;
+  --color-info:      #3498db;
+  --color-bg:        #f0ede6;
+  --color-surface:   #ffffff;
+  --color-text:      #1e1e1e;
+  --color-muted:     #6b7280;
+  --color-border:    #d1d5db;
+
+  --font-display:    'Playfair Display', Georgia, serif;
+  --font-body:       'DM Sans', Helvetica, sans-serif;
+
+  --radius:          8px;
+  --radius-sm:       4px;
+  --shadow:          0 2px 12px rgba(0, 0, 0, 0.09);
+  --shadow-lg:       0 4px 24px rgba(0, 0, 0, 0.14);
+  --transition:      0.25s ease;
+}
+
+
+/* ============================================================
+   Exercise 5: Typography — font-family on body
+   Exercise 4: background image with fallback (set in internal <style>)
+   ============================================================ */
+body {
+  /* background-color set via internal <style> in HTML (Exercise 1) */
+  background-image: url('https://www.transparenttextures.com/patterns/subtle-white-feathers.png');
+  font-family: var(--font-body);   /* Exercise 5 */
+  font-size: 16px;
+  line-height: 1.7;                /* Exercise 5 */
+  color: var(--color-text);
+}
+
+
+/* ============================================================
+   Exercise 3: Element Selector — all <h2>
+   Exercise 4: linear-gradient on section headers
+   ============================================================ */
+h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 3vw, 2rem);   /* Exercise 10: vw unit */
+  color: var(--color-primary);
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  /* Exercise 4: gradient border */
+  border-bottom: 3px solid transparent;
+  border-image: linear-gradient(90deg, var(--color-accent), var(--color-primary)) 1;
+}
+
+/* Exercise 3: Grouping selector — h3, p */
+h3, p {
+  font-family: var(--font-body);
+}
+
+h3 {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--color-primary);
+  margin-bottom: 0.4rem;
+}
+
+p {
+  color: var(--color-muted);
+  margin-bottom: 0.75rem;
+}
+
+
+/* ============================================================
+   Header
+   Exercise 4: linear-gradient background
+   ============================================================ */
+
+/* Style for site header / banner area */
+header {
+  background: linear-gradient(135deg, var(--color-primary) 0%, #2d6a9f 100%);
+  color: #ffffff;
+  padding: 2rem 1rem 1.5rem;
+  text-align: center;
+}
+
+/* Exercise 3: ID Selector — #mainHeader */
+#mainHeader {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 5vw, 3rem);   /* Exercise 10: vw */
+  letter-spacing: 0.02em;
+  /* inline style overrides color to red (Exercise 1);
+     gradient only applies when inline is removed */
+  background: linear-gradient(135deg, #e74c3c, #e85d04);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+.header-tagline {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 0.95rem;
+  letter-spacing: 0.08em;         /* Exercise 5: letter-spacing */
+  text-transform: uppercase;      /* Exercise 5: text-transform */
+  margin-top: 0.4rem;
+}
+
+
+/* ============================================================
+   Navigation — Exercise 6: list + link pseudo-classes
+   ============================================================ */
+nav {
+  background-color: #2c3e50;
+  padding: 0 1rem;
+}
+
+/* Exercise 6: remove bullets from nav menu */
+.nav-menu {
+  display: flex;
+  flex-wrap: wrap;
+  list-style-type: none;          /* Exercise 6 */
+  list-style-position: inside;
+  justify-content: center;
+  gap: 0;
+}
+
+.nav-menu li {
+  padding: 0;                     /* Exercise 6: padding on li */
+  margin: 0;
+}
+
+/* Exercise 6: :link pseudo-class */
+.nav-menu a:link {
+  display: block;
+  padding: 1rem 1.4rem;
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.9rem;
+  text-transform: uppercase;      /* Exercise 5 */
+  letter-spacing: 0.05em;
+  transition: background-color var(--transition);
+}
+
+/* Exercise 6: :visited */
+.nav-menu a:visited {
+  color: #c9d4e0;
+}
+
+/* Exercise 6: :hover */
+.nav-menu a:hover {
+  background-color: var(--color-accent);
+  color: #ffffff;
+}
+
+/* Exercise 6: :active */
+.nav-menu a:active {
+  background-color: #bf4500;
+}
+
+
+/* ============================================================
+   Main Container
+   Exercise 10: max-width with auto margin (% layout)
+   ============================================================ */
+main {
+  max-width: 1000px;
+  width: 100%;                    /* Exercise 10: % */
+  margin: 20px auto;
+  padding: 0 20px;
+}
+
+
+/* ============================================================
+   Sections — Exercise 8: Box Model (padding, border, shadow)
+   ============================================================ */
+section {
+  background: var(--color-surface);
+  padding: 20px;               /* Exercise 8: padding */
+  margin-bottom: 20px;         /* Exercise 8: margin */
+  border-radius: var(--radius);
+  border: 1px solid var(--color-border); /* Exercise 8: border */
+  box-shadow: var(--shadow);
+}
+
+
+/* ============================================================
+   Welcome Banner — Exercise 3: ID selector #welcomeBanner
+   Exercise 4: RGBA and HEX colors
+   ============================================================ */
+
+/* Style for welcome banner */
+#welcomeBanner {
+  background: linear-gradient(135deg, #3498db 0%, #1a6ca8 100%); /* Exercise 4 */
+  color: #ffffff;
+  padding: 15px;
+  border-radius: var(--radius-sm);
+  margin-bottom: 10px;
+}
+
+#welcomeBanner h2 {
+  color: #ffffff;
+  border-image: none;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.3); /* Exercise 4: RGBA */
+  margin-bottom: 0.75rem;
+  font-size: 1.4rem;
+}
+
+#welcomeBanner p {
+  color: rgba(255, 255, 255, 0.9);  /* Exercise 4: RGBA */
+  margin-bottom: 0.4rem;
+}
+
+/* Exercise 3: Class selector .highlight */
+.highlight {
+  background-color: #f1c40f;
+  color: #333;
+  padding: 2px 5px;
+  border-radius: 3px;
+  font-weight: bold;
+}
+
+
+/* ============================================================
+   Exercise 7: Table Styling — Events Gallery
+   ============================================================ */
+
+/* Style for gallery and admin tables */
+table {
+  width: 100%;
+  border-collapse: collapse;    /* Exercise 7 */
+  margin-top: 15px;
+  font-size: 0.95rem;
+}
+
+.gallery-table caption {
+  font-style: italic;
+  color: var(--color-muted);
+  margin-bottom: 10px;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+/* Exercise 7: <th> styling */
+.gallery-table th {
+  background-color: var(--color-primary); /* Exercise 7 */
+  color: #ffffff;
+  padding: 0.75rem 1rem;         /* Exercise 7 */
+  text-align: center;            /* Exercise 7 */
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 0.82rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* Exercise 7: <td> styling */
+.gallery-table td {
+  padding: 10px;                 /* Exercise 7 */
+  text-align: center;            /* Exercise 7 */
+  width: 33.33%;
+  border: 1px solid var(--color-border); /* Exercise 7 */
+}
+
+/* Exercise 7: zebra striping with nth-child(even) */
+.gallery-table tbody tr:nth-child(even) {
+  background-color: #f0f4f8;
+}
+
+.gallery-table tbody tr:hover {
+  background-color: #e8f0fe;
+  transition: background-color var(--transition);
+}
+
+/* Gallery image */
+.gallery-img {
+  width: 100%;
+  max-width: 250px;
+  height: 150px;
+  object-fit: cover;
+  border: 3px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  transition: transform 0.3s ease, border-color 0.2s ease;
+  cursor: pointer;
+  display: block;
+  margin: 0 auto;
+}
+
+.gallery-img:hover {
+  border-color: var(--color-info);
+}
+
+/* JS-toggled: enlarged image */
+.enlarged {
+  transform: scale(1.5);
+  z-index: 10;
+  position: relative;
+  border-color: var(--color-danger) !important;
+}
+
+
+/* ============================================================
+   Exercise 9: Multi-Column — Community Bulletin
+   ============================================================ */
+
+/* Style for newspaper bulletin section */
+#bulletin {
+  background: #fffdf7;
+  border-top: 4px solid var(--color-accent);
+}
+
+.bulletin-article {
+  column-count: 2;             /* Exercise 9 */
+  column-gap: 30px;            /* Exercise 9 */
+  column-rule: 1px solid gray; /* Exercise 9 */
+}
+
+.bulletin-article p {
+  font-size: 0.96rem;
+  text-align: justify;         /* Exercise 5: text-align */
+  line-height: 1.85;           /* Exercise 5: line-height */
+  letter-spacing: 0.01em;      /* Exercise 5: letter-spacing */
+  color: var(--color-text);
+  break-inside: avoid;
+}
+
+
+/* ============================================================
+   Video Section
+   ============================================================ */
+#videoStatus {
+  text-align: center;
+  font-style: italic;
+  color: #555;
+  margin-bottom: 8px;
+}
+
+
+/* ============================================================
+   Exercise 2: CTA Button — clean comment header
+   ============================================================ */
+
+/* Style for main CTA / submit button */
+button {
+  padding: 12px;
+  background-color: var(--color-success);
+  color: white;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color var(--transition), transform var(--transition);
+}
+
+button:hover {
+  background-color: #27ae60;
+  transform: translateY(-2px);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+.btn-clear {
+  background-color: var(--color-danger);
+  margin-top: 10px;
+  width: 100%;
+}
+
+.btn-clear:hover {
+  background-color: #c0392b;
+}
+
+#feedbackBtn {
+  background-color: var(--color-info) !important;
+}
+
+#feedbackBtn:hover {
+  background-color: #217dbb !important;
+}
+
+
+/* ============================================================
+   Registration Form
+   Exercise 8: outline on form input fields
+   ============================================================ */
+form {
+  display: grid;
+  gap: 15px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: var(--color-primary);
+  font-size: 0.93rem;
+}
+
+input,
+select,
+textarea {
+  padding: 10px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--color-text);
+  background-color: #fafafa;
+  transition: border-color var(--transition), outline var(--transition);
+}
+
+/* Exercise 8: outline to highlight selected/focused fields */
+input:focus,
+select:focus,
+textarea:focus {
+  outline: 3px solid rgba(52, 152, 219, 0.35);  /* Exercise 8: outline */
+  border-color: var(--color-info);
+  box-shadow: 0 0 5px rgba(52, 152, 219, 0.4);
+}
+
+.fee-display {
+  font-weight: bold;
+  color: var(--color-primary);
+  margin-top: 5px;
+  font-size: 0.95rem;
+}
+
+.char-counter {
+  font-size: 0.85rem;
+  color: var(--color-muted);
+  text-align: right;
+  margin-top: 2px;
+}
+
+output {
+  display: block;
+  margin-top: 15px;
+  padding: 10px;
+  background-color: #d4edda;
+  color: #155724;
+  border-radius: var(--radius-sm);
+  font-weight: bold;
+  text-align: center;
+}
+
+
+/* ============================================================
+   Exercise 6: Ordered / Unordered list general styling
+   ============================================================ */
+ul, ol {
+  list-style-position: inside;    /* Exercise 6 */
+  padding-left: 1.2rem;
+}
+
+ul  { list-style-type: disc; }   /* Exercise 6 */
+ol  { list-style-type: decimal; }
+
+ul li, ol li {
+  padding: 0.3rem 0;              /* Exercise 6 */
+  margin-bottom: 0.2rem;
+}
+
+
+/* ============================================================
+   Exercise 8: visibility:hidden vs display:none
+   ============================================================ */
+.visibility-hidden-demo {
+  visibility: hidden;   /* invisible but still takes up space */
+}
+
+.display-none-demo {
+  display: none;        /* fully removed from layout */
+}
+
+
+/* ============================================================
+   Footer
+   ============================================================ */
+footer {
+  background-color: var(--color-primary);
+  color: rgba(255, 255, 255, 0.75);
+  text-align: center;
+  padding: 1rem;
+  margin-top: 40px;
+  font-size: 0.88rem;
+}
+
+
+/* ============================================================
+   Exercise 10: Media Queries — Responsive Design
+   ============================================================ */
+
+/* Flexible base units */
+.gallery-img { max-width: 100%; }  /* Exercise 10 */
+
+img {
+  max-width: 100%;                 /* Exercise 10: responsive images */
+  height: auto;
+}
+
+/* Exercise 10: screen < 768px */
+@media (max-width: 768px) {
+
+  /* Stack nav vertically */
+  .nav-menu {
+    flex-direction: column;        /* Exercise 10 */
+    align-items: stretch;
+  }
+
+  .nav-menu a:link {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: center;
+  }
+
+  /* Reduce font sizes */
+  body {
+    font-size: 14px;               /* Exercise 10 */
+  }
+
+  #mainHeader {
+    font-size: 8vw;                /* Exercise 10: vw */
+  }
+
+  h2 {
+    font-size: 1.3rem;
+  }
+
+  /* Single-column bulletin */
+  .bulletin-article {
+    column-count: 1;               /* Exercise 10 */
+  }
+
+  /* Stack gallery columns */
+  .gallery-table,
+  .gallery-table thead,
+  .gallery-table tbody,
+  .gallery-table tr {
+    display: block;
+    width: 100%;
+  }
+
+  .gallery-table th { display: none; }  /* hide column headers on mobile */
+
+  .gallery-table td {
+    display: block;
+    width: 100%;
+    padding: 8px;
+  }
+
+  .gallery-img {
+    max-width: 100%;
+    height: 180px;
+  }
+
+  /* Full-width buttons */
+  form > div[style] {
+    grid-template-columns: 1fr !important;
+  }
+
+  main {
+    padding: 0 10px;
+  }
+}
+
+/* Exercise 10 Bonus: Flexbox + Grid already used in form layout */
